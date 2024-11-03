@@ -845,6 +845,11 @@ alien-signals@^0.2.0:
   resolved "https://registry.yarnpkg.com/alien-signals/-/alien-signals-0.2.0.tgz#f159e1b767802f2444fed4e58b8d15fd8bab1c24"
   integrity sha512-StlonZhBBrsPPwrDjiPAiVTf/rolxffLxVPT60Qv/t88BZ81BvUVzHgGqEFvJ1ii8HXtm1+zU2Icr59tfWEcag==
 
+animate.css@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/animate.css/-/animate.css-4.1.1.tgz#614ec5a81131d7e4dc362a58143f7406abd68075"
+  integrity sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==
+
 ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
@@ -3010,6 +3015,11 @@ vue-tsc@^2.0.24:
     "@volar/typescript" "~2.4.8"
     "@vue/language-core" "2.1.10"
     semver "^7.5.4"
+
+vue3-carousel@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/vue3-carousel/-/vue3-carousel-0.4.0.tgz#acc9facc956ad709ce6cd9c24fb6d3bfbaf4ba05"
+  integrity sha512-S8amVc3CiYb5SFHvSzSZ5vXDClL5H717847FcCQ0+iKYF9iTcPEAWoHcqSy2kU/rZ3HTq7IcmZl9R0wcKVnguQ==
 
 vue@^3.4.0:
   version "3.5.12"

@@ -1,198 +1,233 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
+import MapMarkerOutlineIcon from 'vue-material-design-icons/MapMarkerOutline.vue';
+import MenuDownIcon from 'vue-material-design-icons/MenuDown.vue';
+import MagnifyIcon from 'vue-material-design-icons/Magnify.vue';
+import CartMinusIcon from 'vue-material-design-icons/CartMinus.vue';
+import MenuIcon from 'vue-material-design-icons/Menu.vue';
+import AccountCircleIcon from 'vue-material-design-icons/AccountCircle.vue';
+import CloseIcon from 'vue-material-design-icons/Close.vue';
+import ChevronRightIcon from 'vue-material-design-icons/ChevronRight.vue';
 
-const showingNavigationDropdown = ref(false);
+let showMenu = ref(false);
 </script>
 
 <template>
-    <div>
-        <div class="min-h-screen bg-gray-100">
-            <nav
-                class="bg-white border-b border-gray-100"
-            >
-                <!-- Primary Navigation Menu -->
-                <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div class="flex justify-between h-16">
-                        <div class="flex">
-                            <!-- Logo -->
-                            <div class="flex items-center shrink-0">
-                                <Link :href="route('dashboard')">
-                                    <ApplicationLogo
-                                        class="block w-auto text-gray-800 fill-current h-9"
-                                    />
-                                </Link>
-                            </div>
+    <div class="min-w-[1150px] bg-gray-900 h-full">
+        <div class="flex items-center bg-gray-900 h-[60px] py-2 fixed z-50 min-w-[1150px] w-full">
 
-                            <!-- Navigation Links -->
-                            <div
-                                class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
-                            >
-                                <NavLink
-                                    :href="route('dashboard')"
-                                    :active="route().current('dashboard')"
-                                >
-                                    Dashboard
-                                </NavLink>
-                            </div>
+            <div class="flex">
+                <Link class="text-white h-[50px] p-2 pt-3 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    AMAZON
+                </Link>
+            </div>
+
+            <div class="text-white h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                <div class="flex items-center justify-center">
+                    <MapMarkerOutlineIcon class="pt-2 -ml-1" fillColor="#f5f5f5" />
+
+                    <div>
+                        <div class="text-[13px] text-gray-300 font-extrabold">
+                            <div>Deliver to William</div>
                         </div>
 
-                        <div class="hidden sm:ms-6 sm:flex sm:items-center">
-                            <!-- Settings Dropdown -->
-                            <div class="relative ms-3">
-                                <Dropdown align="right" width="48">
-                                    <template #trigger>
-                                        <span class="inline-flex rounded-md">
-                                            <button
-                                                type="button"
-                                                class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none"
-                                            >
-                                                {{ $page.props.auth.user.name }}
-
-                                                <svg
-                                                    class="-me-0.5 ms-2 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fill-rule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </template>
-
-                                    <template #content>
-                                        <DropdownLink
-                                            :href="route('profile.edit')"
-                                        >
-                                            Profile
-                                        </DropdownLink>
-                                        <DropdownLink
-                                            :href="route('logout')"
-                                            method="post"
-                                            as="button"
-                                        >
-                                            Log Out
-                                        </DropdownLink>
-                                    </template>
-                                </Dropdown>
-                            </div>
+                        <div class="text-[15px] text-white -mt-1.5 font-extrabold">
+                            <div>London SW2 SW2</div>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <!-- Hamburger -->
-                        <div class="flex items-center -me-2 sm:hidden">
-                            <button
-                                @click="
-                                    showingNavigationDropdown =
-                                        !showingNavigationDropdown
-                                "
-                                class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
-                            >
-                                <svg
-                                    class="w-6 h-6"
-                                    stroke="currentColor"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        :class="{
-                                            hidden: showingNavigationDropdown,
-                                            'inline-flex':
-                                                !showingNavigationDropdown,
-                                        }"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                    <path
-                                        :class="{
-                                            hidden: !showingNavigationDropdown,
-                                            'inline-flex':
-                                                showingNavigationDropdown,
-                                        }"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
-                            </button>
+            <div class="flex grow items-center h-[45px] px-1">
+                <div class="flex items-center justify-center font-extrabold bg-gray-100 border-r-gray-300 text-[11px] text-gray-600 w-[60px] h-[40px] rounded-l-md cursor-pointer">
+                    <div class="pt-[3px]">
+                        All
+                    </div>
+                    <MenuDownIcon fillColor="#5E5E5E" :size="20" class="-mr-2" />
+                </div>
+                <input class="block w-full border-transparent border-none focus:border-transparent focus:ring-0" type="text">
+                <div class="cursor-pointer bg-orange-300 p-[5px] px-2 rounded-r-md">
+                    <MagnifyIcon :size="30" />
+                </div>
+            </div>
+
+            <div class="flex">
+                <div class="h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    <div class="flex items-center justify-center mt-2.5 px-1">
+                        <img src="https://via.placeholder.com/35x20" alt="">
+                        <div class="text-[15px] text-white -mt-2 -mr-0.5 font-extrabold">EN</div>
+                        <MenuDownIcon fillColor="#c2c2c2" :size="20" class="-mr-4 -mt-1.5 pr-1" />
+                    </div>
+                </div>
+
+                <div class="h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    <div class="flex items-center justify-center">
+                        <div>
+                            <div class="text-[12px] text-white font-extrabold">
+                                Hello,
+                                <span>Sign in</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-[15px] text-white -mt-1.5 font-extrabold">Accoun & List</div>
+                                <MenuDownIcon fillColor="#c2c2c2" :size="20" class="pr-1 -mt-1 -mr-4" />
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Responsive Navigation Menu -->
-                <div
-                    :class="{
-                        block: showingNavigationDropdown,
-                        hidden: !showingNavigationDropdown,
-                    }"
-                    class="sm:hidden"
-                >
-                    <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink
-                            :href="route('dashboard')"
-                            :active="route().current('dashboard')"
-                        >
-                            Dashboard
-                        </ResponsiveNavLink>
-                    </div>
-
-                    <!-- Responsive Settings Options -->
-                    <div
-                        class="pt-4 pb-1 border-t border-gray-200"
-                    >
-                        <div class="px-4">
-                            <div
-                                class="text-base font-medium text-gray-800"
-                            >
-                                {{ $page.props.auth.user.name }}
+                <div class="h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    <div class="flex items-center justify-center">
+                        <div>
+                            <div class="text-[12px] text-white font-extrabold">Returns</div>
+                            <div class="flex items-center">
+                                <div class="text-[15px] text-white -mt-1.5 font-extrabold">& Orders</div>
                             </div>
-                            <div class="text-sm font-medium text-gray-500">
-                                {{ $page.props.auth.user.email }}
-                            </div>
-                        </div>
-
-                        <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.edit')">
-                                Profile
-                            </ResponsiveNavLink>
-                            <ResponsiveNavLink
-                                :href="route('logout')"
-                                method="post"
-                                as="button"
-                            >
-                                Log Out
-                            </ResponsiveNavLink>
                         </div>
                     </div>
                 </div>
-            </nav>
 
-            <!-- Page Heading -->
-            <header
-                class="bg-white shadow"
-                v-if="$slots.header"
-            >
-                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <slot name="header" />
+                <div class="relative h-[50px] p-2 border-[1px] border-gray-900 rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    <span class="absolute text-center right-[21px] w-[14px] -top-0 rounded-full text-[20px]">
+                        <div class="text-orange-400 font-extrabold bg-gray-900 h-[16px]">0</div>
+                    </span>
+                    <div class="flex items-center justify-center">
+                        <CartMinusIcon fillColor="#FCFCFC" :size="40" class="-mt-0.5" />
+                    </div>
                 </div>
-            </header>
+            </div>
+        </div>
 
-            <!-- Page Content -->
-            <main>
-                <slot />
-            </main>
+        <div class="flex items-center justify-between bg-[#232f3e] h-[38px] fixed z-40 min-w-[1150px] w-full mt-[60px]">
+            <div class="flex">
+                <div @click="showMenu = true" class="flex h-[30px] border-[1px] border-[#232f3e] rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    <div class="flex items-center justify-between px-2">
+                        <MenuIcon fillColor="#F5F5F5" :size="26" class="mr-0.5" />
+                        <div class="text-[14px] text-white font-extrabold">All</div>
+                    </div>
+                </div>
+                <div class="flex h-[30px] border-[1px] border-[#232f3e] rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    <div class="flex items-center justify-between px-2">
+                        <div class="text-[14px] text-white font-extrabold">Today's Deals</div>
+                    </div>
+                </div>
+                <div class="flex h-[30px] border-[1px] border-[#232f3e] rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    <div class="flex items-center justify-between px-2">
+                        <div class="text-[14px] text-white font-extrabold">Gift Cards</div>
+                    </div>
+                </div>
+                <div class="flex h-[30px] border-[1px] border-[#232f3e] rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    <div class="flex items-center justify-between px-2">
+                        <div class="text-[14px] text-white font-extrabold">Buy Again</div>
+                    </div>
+                </div>
+                <div class="flex h-[30px] border-[1px] border-[#232f3e] rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    <div class="flex items-center justify-between px-2">
+                        <div class="text-[14px] text-white font-extrabold">Customer Service</div>
+                    </div>
+                </div>
+                <div class="flex h-[30px] border-[1px] border-[#232f3e] rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    <div class="flex items-center justify-between px-2">
+                        <div class="text-[14px] text-white font-extrabold">William's Amazon.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="flex h-[30px] border-[1px] border-[#232f3e] rounded-sm hover:border-[1px] hover:border-gray-100 cursor-pointer">
+                    <div class="flex items-center justify-between px-2">
+                        <div class="text-[14px] text-white font-extrabold">Holiday Fashion Deals</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="max-w-[1500px] mx-auto">
+            <div class="pt-[98px]"></div>
+            <slot />
+        </main>
+
+        <div class="w-full mt-10 overflow-x-scroll bg-white">
+            <div class="max-w-[1500px] mx-auto">
+                <div class="text-[23px] pt-4 font-extrabold">Recommended based on your shopping trends</div>
+                <div class="flex items-stretch justify-center">
+                    <div class="p-4 mx-auto text-center">
+                        <div class="w-[158px] h-[150px] overflow-hidden">
+                            <img src="https://via.placeholder.com/158x150" alt="">
+                        </div>
+                        <div class="w-[160px] text-[12px] py-2 text-teal-600 font-extrabold hover:text-red-600 cursor-pointer">
+                            This is a test title
+                        </div>
+                        <div class="flex justify-start">
+                            <div class="w-full text-xs font-extrabold text-left text-red-600">$99.99</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-[#232F3E]">
+            <div class="bg-[#37475A] hover-bg-gray-600 w-full p-3.5 cursor-pointer text-white font-extrabold text-center">
+                Back to top
+            </div>
+            <div class="flex items-stretch justify-between max-w-[1000px] mx-auto p-10 text-white">
+                <ul>
+                    <li class="text-lg font-extrabold">Get to Kwon Us</li>
+                    <li class="cursor-pointer hover:underline">Careers</li>
+                    <li class="cursor-pointer hover:underline">About Amazon</li>
+                    <li class="cursor-pointer hover:underline">Investor Relations</li>
+                    <li class="cursor-pointer hover:underline">Amazon Devices</li>
+                    <li class="cursor-pointer hover:underline">Amazon Science</li>
+                </ul>
+
+                <ul>
+                    <li class="text-lg font-extrabold">Make Money with Us</li>
+                    <li class="cursor-pointer hover:underline">Sell products on Amazon</li>
+                    <li class="cursor-pointer hover:underline">Sell on Amazon Business</li>
+                    <li class="cursor-pointer hover:underline">Sell apps on Amazon</li>
+                    <li class="cursor-pointer hover:underline">Become an Afiliate</li>
+                    <li class="cursor-pointer hover:underline">Advertise Your Products</li>
+                    <li class="cursor-pointer hover:underline">Self-Publish with Us</li>
+                    <li class="cursor-pointer hover:underline">Host an Amazon Hub</li>
+                </ul>
+
+                <ul>
+                    <li class="text-lg font-extrabold">Get to Kwon Us</li>
+                    <li class="cursor-pointer hover:underline">Careers</li>
+                    <li class="cursor-pointer hover:underline">About Amazon</li>
+                    <li class="cursor-pointer hover:underline">Investor Relations</li>
+                    <li class="cursor-pointer hover:underline">Amazon Devices</li>
+                    <li class="cursor-pointer hover:underline">Amazon Science</li>
+                </ul>
+
+                <ul>
+                    <li class="text-lg font-extrabold">Make Money with Us</li>
+                    <li class="cursor-pointer hover:underline">Sell products on Amazon</li>
+                    <li class="cursor-pointer hover:underline">Sell on Amazon Business</li>
+                    <li class="cursor-pointer hover:underline">Sell apps on Amazon</li>
+                    <li class="cursor-pointer hover:underline">Become an Afiliate</li>
+                    <li class="cursor-pointer hover:underline">Advertise Your Products</li>
+                    <li class="cursor-pointer hover:underline">Self-Publish with Us</li>
+                    <li class="cursor-pointer hover:underline">Host an Amazon Hub</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <div v-if="showMenu" class="fixed top-0 z-50 w-full h-full bg-black bg-opacity-70" :class="[showMenu ? 'animate__animated animate__fadeIn animate__faster' : '']">
+        <CloseIcon @click="showMenu = false" :size="30" fillColor="#DCDCDC" class="ml-2.5 mt-3.5 left-80 cursor-pointer fixed z-50" :class="[showMenu ? 'animate__animated animate__fadeIn animate__faster' : '']" />
+        <div class="h-full bg-white w-80" :class="[showMenu ? 'animate__animated animate__slideInLeft animate__faster' : '']">
+            <div class="bg-[#232f3e] font-extrabold text-[18px] flex items-center p-2 text-white pl-7">
+                <span>Hello, sign in</span>
+            </div>
+            <div class="font-extrabold text-[16px] pt-3 pb-1 pl-6 pr-3 text-black">
+                Shop By Department
+            </div>
+            <div class="pl-6 pr-3 hover:bg-gray-200">
+                <div class="py-2.5 text-[13px] text-black flex justify-between items-center hover:bg-gray-200 cursor-pointer">
+                    Computers <ChevronRightIcon :size="20" fillColor="#808080" />
+                </div>
+            </div>
         </div>
     </div>
 </template>
