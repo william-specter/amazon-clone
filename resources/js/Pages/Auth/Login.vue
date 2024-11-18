@@ -67,31 +67,28 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="text-sm text-gray-600 ms-2"
-                        >Remember me</span
-                    >
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Forgot your password?
-                </Link>
-
+            <div class="my-3">
                 <PrimaryButton
-                    class="ms-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Log in
                 </PrimaryButton>
+            </div>
+
+            <div class="pt-4 text-sm">
+                By signing-in you agree to Amazon's Conditions of Use & Sale.
+                Please see our Privacy Notice, our Cookies Notice and our Interest-Based Ads Notice
+            </div>
+
+            <div class="flex items-center justify-start mt-4">
+                <Link
+                    v-if="canResetPassword"
+                    :href="route('password.request')"
+                    class="text-sm text-blue-700 hover:underline rounded-md hover:text-red-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                    Forgot your password?
+                </Link>
             </div>
         </form>
     </GuestLayout>

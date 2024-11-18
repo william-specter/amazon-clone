@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 
@@ -28,9 +28,10 @@ import { Carousel, Navigation, Slide } from 'vue3-carousel';
                     You are on amazon.com You can also shop on Amazon UK for millions of products with fast local delivery.
                 </div>
             </div>
+
             <div class="relative z-10 grid grid-cols-3 m-4">
                 <div class="p-1.5 flex" v-for="cat in $page.props.categories" :key="cat">
-                    <Link href="/" class="bg-white p-5">
+                    <Link :href="route('category.index', { id: cat.id})" class="bg-white p-5">
                         <div class="flex text-2xl font-extrabold">{{ cat.name }}</div>
                         <div class="flex">
                             <img class="object-fill" :src="`/images/categories/${cat.id}.png`" alt="">
